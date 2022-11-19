@@ -24,27 +24,27 @@
                         <form action="" method="post" name="login">
                             <div class="form-group content-number">
                                 <div class="row block-number">
-                                    <input  class="form-control col-md-7 col-sm-6 m-2" type="password" name="password" id="password">
+                                    <input id="pin"  class="form-control col-md-7 col-sm-6 m-2 text-center" type="password" name="password" disabled>
                                  </div>
                                 <div class="row block-number">
-                                    <input class="btn-number" type="button" value="1">
-                                    <input class="btn-number" type="button" value="2">
-                                    <input class="btn-number" type="button" value="3">
+                                    <input id="number" class="btn-number" type="button" value="1" onclick="getNumber(value);">
+                                    <input id="number" class="btn-number" type="button" value="2" onclick="getNumber(value);">
+                                    <input id="number" class="btn-number" type="button" value="3" onclick="getNumber(value);">
                                 </div>
                                 <div class="row block-number">
-                                    <input class="btn-number" type="button" value="4">
-                                    <input class="btn-number" type="button" value="5">
-                                    <input class="btn-number" type="button" value="6">
+                                    <input id="number" class="btn-number" type="button" value="4" onclick="getNumber(value);">
+                                    <input id="number" class="btn-number" type="button" value="5" onclick="getNumber(value);">
+                                    <input id="number" class="btn-number" type="button" value="6" onclick="getNumber(value);">
                                 </div>
                                 <div class="row block-number">
-                                    <input class="btn-number" type="button" value="7">
-                                    <input class="btn-number" type="button" value="8">
-                                    <input class="btn-number" type="button" value="9">
+                                    <input id="number" class="btn-number" type="button" value="7" onclick="getNumber(value);">
+                                    <input id="number" class="btn-number" type="button" value="8" onclick="getNumber(value);">
+                                    <input id="number" class="btn-number" type="button" value="9" onclick="getNumber(value);">
                                 </div>
                                 <div class="row block-opcion">
-                                    <input class="btn-opcion" type="button" value="borrar">
-                                    <input class="btn-number" type="button" value="0">
-                                    <input class="btn-opcion" type="button" value="entrar">
+                                    <input id="borrar" class="btn-opcion" type="button" value="borrar" onclick="limpiarInputs();">
+                                    <input id="number" class="btn-number" type="button" value="0" onclick="getNumber(value);">
+                                    <input id="ingresar" class="btn-opcion" type="button" value="ingresar" onclick="Ingresar();">
                                 </div>
                             </div>
                         </form>
@@ -53,6 +53,8 @@
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./js/login.js"></script>
 </body>
 
 </html>
