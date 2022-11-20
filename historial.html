@@ -43,7 +43,7 @@
                 </div>
             </div>
         </nav>
-        
+
         <!--Panel de bienvenida-->
         <!--Contenido-->
         <div class="tophead">
@@ -52,7 +52,7 @@
                     <div class="col-md-7  mt-4 mb-4">
                         <h1 class="title-main wow fadeInLeft">Historial de Transacciones<br>
                             <hr>
-                        <h3 class="subtitle-main wow fadeInUp">No. Cuenta: <span id="txtNoCuenta">----</span></h3>
+                            <h3 class="subtitle-main wow fadeInUp">No. Cuenta: <span id="txtNoCuenta">----</span></h3>
                     </div>
                 </div>
             </div>
@@ -60,65 +60,81 @@
         <!-- As a heading -->
         <div class="m-2">
             <nav class="navbar navbar-light bg-light">
-                <span class="navbar-brand mb-0 h1">Cajero Automático / Historial</span>
+                <span class="navbar-brand mb-0 h1">Pokemon Bank</span>
             </nav>
         </div>
         <!--Contenido-->
         <div class="card m-2">
             <div class="card-header">
-                <span class="navbar-brand mb-0 h3">Pago de Servicios</span>
+                <span class="navbar-brand mb-0 h3"> Historial / Ingresos</span>
             </div>
             <div class="card-body">
-                <div class="card">
-                    <div class="card-header">
-                        <h6 class="card-title">Pokemon Bank</h6>
-                    </div>
-                    <div class="card-body">
-                      <h6 class="card-title">Pago de recibo de luz</h6>
-                      <p class="card-text">Pago de servicio de luz por $20.</p>
-                      <a href="#" class="btn btn-primary">Detalles</a>
-                    </div>
-                    <div class="card-footer text-muted">
-                      2 days ago
-                    </div>
-                  </div>
+                <table class="table table-dark text-center">
+                    <thead>
+                        <tr>
+                            <th scope="col">Descripcion</th>
+                            <th scope="col">Monto</th>
+                            <th scope="col">Fecha</th>
+                        </tr>
+                    </thead>
+                    <tbody id="td_ingresos">
+                    </tbody>
+                </table>
             </div>
-            <div class="card-footer"></div>
-          </div>
+        </div>
 
-          <div class="card m-2">
+        <div class="card m-2">
             <div class="card-header">
-                <span class="navbar-brand mb-0 h3">Retiro de Fondos</span>
+                <span class="navbar-brand mb-0 h3">Historial / Egresos</span>
             </div>
             <div class="card-body">
-                <div class="card">
-                    <div class="card-header">
-                        <h6 class="card-title">Pokemon Bank</h6>
-                    </div>
-                    <div class="card-body">
-                      <h6 class="card-title">Retiro de fondo de cuenta de ahorro</h6>
-                      <p class="card-text">Transaccion de retiro por un monto de $50.</p>
-                      <a href="#" class="btn btn-primary">Detalles</a>
-                    </div>
-                    <div class="card-footer text-muted">
-                      3 days ago
-                    </div>
-                  </div>
+                <table class="table table-dark text-center">
+                    <thead>
+                        <tr>
+                            <th scope="col">Descripcion</th>
+                            <th scope="col">Monto</th>
+                            <th scope="col">Fecha</th>
+                        </tr>
+                    </thead>
+                    <tbody id="td_egresos">
+                    </tbody>
+                </table>
             </div>
             <div class="card-footer"></div>
-          </div>
+        </div>
+
+        <div class="card m-2">
+            <div class="card-header">
+                <span class="navbar-brand mb-0 h3">Historial / Pagos</span>
+            </div>
+            <div class="card-body">
+                <table class="table table-dark text-center">
+                    <thead>
+                        <tr>
+                            <th scope="col">Descripcion</th>
+                            <th scope="col">Monto</th>
+                            <th scope="col">Fecha</th>
+                        </tr>
+                    </thead>
+                    <tbody id="td_pagos">
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer"></div>
+        </div>
 
         <!--Pie de pagina-->
         <footer class="bg-light text-center text-lg-start">
             <!-- Copyright -->
             <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-                © 2022 Copyright:
+                UBV_Virtual © 2022 Ascen2000: Pedro Alexander Ascencio
 
             </div>
             <!-- Copyright -->
         </footer>
     </div>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="./js/sweetalert.min.js"></script>
     <script src="./js/hitorial.js"></script>
 </body>
+
 </html>

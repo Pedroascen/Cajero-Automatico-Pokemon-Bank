@@ -65,19 +65,14 @@ function iniciarSesion(pass) {
 
     if (pass == usuario[0].pin) {//validar nombre de usuario y contrasenia
         var saldo = 500.00;
-        var deposito = [];
-        var retiro = [];
-        var tipo = [];
-        var cantidadTipo = [];
+        var transacciones = [];
         localStorage.setItem('Usuarios', JSON.stringify(usuario));
         localStorage.setItem('Saldo', JSON.stringify(saldo));
-        localStorage.setItem('Deposito', JSON.stringify(deposito));
-        localStorage.setItem('Retiro', JSON.stringify(retiro));
-        localStorage.setItem('Tipo', JSON.stringify(tipo));
-        localStorage.setItem('CantidadTipo', JSON.stringify(cantidadTipo));
-
+        localStorage.setItem('Transacciones', JSON.stringify(transacciones));
+        
         console.log(localStorage.getItem('Usuarios'));
         console.log(localStorage.getItem('Saldo'));
+        //console.log(localStorage.getItem('Trabasacciones','[]'));
         location.href = 'index.html';
     } else {
         //alert('Pin incorrecto');

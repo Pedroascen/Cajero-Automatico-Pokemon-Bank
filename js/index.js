@@ -1,11 +1,11 @@
 window.onload = funcionPrincipal();
 //variables globales
 var usuario;
-var monto;
 
 function funcionPrincipal() {
     //obtener datos de usuario
     usuario = JSON.parse(localStorage.getItem('Usuarios'));
+    console.log(localStorage.getItem('Transacciones'));
 
     if (JSON.stringify(usuario) != 'null') {//comprobamos si el usuario se ha logueado
         //guardar datos en variables
@@ -79,9 +79,19 @@ function depositar() {
                     });
                     return false;
                 }
+                //operaciones para obetener nuevo saldo
                 var nuevo_saldo = saldo + monto;
                 nuevo_saldo = financial(nuevo_saldo);
-                localStorage.setItem('Saldo', JSON.stringify(nuevo_saldo));//guardando nuevo saldo en el localStorage
+
+                //seleccionado tipo de transaccion
+                var tipo = 1;
+                monto = financial(monto);
+                //agregamos descripcion
+                var descripcion = 'Realizo ingreso';
+                //se registra la transaccion con los datos de descripcion, tipo, monto
+                registrarTransaccion(tipo, monto, descripcion);
+                //guardando nuevo saldo en el localStorage
+                localStorage.setItem('Saldo', JSON.stringify(nuevo_saldo));
                 swal({
                     title: "Transaccion exitosa!!!",
                     text: "",
@@ -115,7 +125,15 @@ function retirar() {
                 }
                 var nuevo_saldo = saldo - monto;
                 nuevo_saldo = financial(nuevo_saldo);
-                localStorage.setItem('Saldo', JSON.stringify(nuevo_saldo));//guardando nuevo saldo en el localStorage
+                //seleccionado tipo de transaccion
+                var tipo = 2;
+                monto = financial(monto);
+                //agregamos descripcion
+                var descripcion = 'Realizo egreso';
+                //se registra la transaccion con los datos de descripcion, tipo, monto
+                registrarTransaccion(tipo, monto, descripcion);
+                //guardando nuevo saldo en el localStorage
+                localStorage.setItem('Saldo', JSON.stringify(nuevo_saldo));
                 swal({
                     title: "Transaccion exitosa!!!",
                     text: "",
@@ -142,7 +160,7 @@ function pago() {
     swal({
         title: "Seleccione un servicio",
         buttons: {
-            
+
             electricidad: {
                 text: "Electricidad",
                 value: "electricidad",
@@ -207,6 +225,14 @@ function pago_electricidad() {
                 }
                 var nuevo_saldo = saldo - monto;
                 nuevo_saldo = financial(nuevo_saldo);
+                //seleccionado tipo de transaccion
+                var tipo = 3;
+                monto = financial(monto);
+                //agregamos descripcion
+                var descripcion = 'Realizo pago de servicio: electricidad';
+                //se registra la transaccion con los datos de descripcion, tipo, monto
+                registrarTransaccion(tipo, monto, descripcion);
+                //guardando nuevo saldo en el localStorage
                 localStorage.setItem('Saldo', JSON.stringify(nuevo_saldo));
                 swal({
                     title: "Transaccion exitosa!!!",
@@ -240,7 +266,15 @@ function pago_agua() {
                 }
                 var nuevo_saldo = saldo - monto;
                 nuevo_saldo = financial(nuevo_saldo);
-                localStorage.setItem('Saldo', JSON.stringify(nuevo_saldo));//guardando nuevo saldo en el localStorage
+                //seleccionado tipo de transaccion
+                var tipo = 3;
+                monto = financial(monto);
+                //agregamos descripcion
+                var descripcion = 'Realizo pago de servicio: agua';
+                //se registra la transaccion con los datos de descripcion, tipo, monto
+                registrarTransaccion(tipo, monto, descripcion);
+                //guardando nuevo saldo en el localStorage
+                localStorage.setItem('Saldo', JSON.stringify(nuevo_saldo));
                 swal({
                     title: "Transaccion exitosa!!!",
                     text: "",
@@ -273,7 +307,15 @@ function pago_telefono() {
                 }
                 var nuevo_saldo = saldo - monto;
                 nuevo_saldo = financial(nuevo_saldo);
-                localStorage.setItem('Saldo', JSON.stringify(nuevo_saldo));//guardando nuevo saldo en el localStorage
+                //seleccionado tipo de transaccion
+                var tipo = 3;
+                monto = financial(monto);
+                //agregamos descripcion
+                var descripcion = 'Realizo pago de servicio: telefono';
+                //se registra la transaccion con los datos de descripcion, tipo, monto
+                registrarTransaccion(tipo, monto, descripcion);
+                //guardando nuevo saldo en el localStorage
+                localStorage.setItem('Saldo', JSON.stringify(nuevo_saldo));
                 swal({
                     title: "Transaccion exitosa!!!",
                     text: "",
@@ -306,20 +348,60 @@ function pago_internet() {
                 }
                 var nuevo_saldo = saldo - monto;
                 nuevo_saldo = financial(nuevo_saldo);
-                localStorage.setItem('Saldo', JSON.stringify(nuevo_saldo));//guardando nuevo saldo en el localStorage
+                //seleccionado tipo de transaccion
+                var tipo = 3;
+                monto = financial(monto);
+                //agregamos descripcion
+                var descripcion = 'Realizo pago de servicio: internet';
+                //se registra la transaccion con los datos de descripcion, tipo, monto
+                registrarTransaccion(tipo, monto, descripcion);
+                //guardando nuevo saldo en el localStorage
+                localStorage.setItem('Saldo', JSON.stringify(nuevo_saldo));
                 swal({
                     title: "Transaccion exitosa!!!",
                     text: "",
                     icon: "success",
                 });
-                //alert("Transaccion exitosa");
             } else {
                 validarMonto(value);
             }
         });
 }
+//funcion para registrar transacciones
+function registrarTransaccion(tipo, monto, descripcion) {
+    //indicamos que se almacenara un arreglo en el localStorage
+    if (localStorage.getItem('Transacciones') == null) {
+        localStorage.setItem('Transacciones', '[]')
+    }
+    //creamos variable para registrar fecha
+    var fecha = new Date();
+
+    //identificando tipo de transaccion
+    if (tipo == 1) {
+        //se guarda la transaccion
+        var transacciones = JSON.parse(localStorage.getItem('Transacciones'));
+        transacciones.push({ tipo: tipo, monto: monto, descripcion: descripcion, fecha: fecha});
+        localStorage.setItem('Transacciones', JSON.stringify(transacciones));
+        console.log(transacciones);
+    }
+    if (tipo == 2) {
+        //se guarda la transaccion
+        var transacciones = JSON.parse(localStorage.getItem('Transacciones'));
+        transacciones.push({ tipo: tipo, monto: monto, descripcion: descripcion, fecha: fecha});
+        localStorage.setItem('Transacciones', JSON.stringify(transacciones));
+        console.log(transacciones);
+    }
+    if (tipo == 3) {
+        //se guarda la transaccion
+        var transacciones = JSON.parse(localStorage.getItem('Transacciones'));
+        transacciones.push({ tipo: tipo, monto: monto, descripcion: descripcion, fecha: fecha});
+        localStorage.setItem('Transacciones', JSON.stringify(transacciones));
+        console.log(transacciones);
+    }
+}
 //cerrar sesion
 function salir() {
     localStorage.removeItem('Usuarios');
+    localStorage.removeItem('Transacciones');
     location.href = 'login.html';
 }
