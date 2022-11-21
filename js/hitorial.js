@@ -33,6 +33,7 @@ function cargarCards(transacciones) {
 
     //recorremos el arreglo del localStorage
     for (let i = 0; i < transacciones.length; i++) {    
+        //dependiendo del tipo lo enviamos a la tabla correspondiente
         if (transacciones[i].tipo == 1) {
             var tbody = document.getElementById('td_ingresos');
             var row = '<tr>'
@@ -43,6 +44,7 @@ function cargarCards(transacciones) {
             tbody.innerHTML += row;
             console.log(row);
         }
+        //dependiendo del tipo lo enviamos a la tabla correspondiente
         if (transacciones[i].tipo == 2) {
             var tbody = document.getElementById('td_egresos');
             var row = '<tr>'
@@ -53,6 +55,7 @@ function cargarCards(transacciones) {
             tbody.innerHTML += row;
             console.log(row);
         }
+        //dependiendo del tipo lo enviamos a la tabla correspondiente
         if (transacciones[i].tipo == 3) {
             var tbody = document.getElementById('td_pagos');
             var row = '<tr>'

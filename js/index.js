@@ -71,14 +71,7 @@ function depositar() {
                 var saldo = JSON.parse(localStorage.getItem('Saldo'));
                 monto = parseFloat(value);
                 saldo = parseFloat(saldo);
-                if (monto > saldo) {//se valida la cantidad a pagar
-                    swal({
-                        title: "El monto es mayor al saldo diponible!!!",
-                        text: "",
-                        icon: "error",
-                    });
-                    return false;
-                }
+                
                 //operaciones para obetener nuevo saldo
                 var nuevo_saldo = saldo + monto;
                 nuevo_saldo = financial(nuevo_saldo);
